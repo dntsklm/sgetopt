@@ -1,0 +1,147 @@
+About
+=====
+
+Simple alternative for PHP native getopt() CLI short option parser
+
+PHP (as of v5.4) native getopt() does not:
+* Include all of option information supplied on CLI
+* Offer to detect and handle option error for caller
+sgetopt() does.
+
+As an example: native function in the returned array does not set key
+of an option with required argument and when that required argument
+is not supplied. This makes detecting missing argument problematic.
+
+Files
+=====
+
+COPYING		license information
+manual		PHP.net style documentation
+README		this document
+sgetopt.php	CLI short option parsing code
+test/correct	output expected from test.sh execution
+test/test.php	test code for single case of option strings
+test/test.sh	test code for set of cases of option strings
+
+Requirements
+============
+
+Stock PHP v5.4 (or possibly later) command-line interpreter and the
+inclusion of the sgetopt.php code by the caller of sgetopt().
+
+Use
+===
+
+Only short--single ASCII letter character--options are accepted.
+
+If in the option string (specified by a program or by an user) there
+are more than one same option character, the last specification of it
+is effective.
+
+Option and its argument is separated by white space. If as an argument
+there are two or more strings separated by white space, they are
+concatenated; if spaces are to be preserved, they must be quoted at
+command-line.
+
+For error handling specifics, please refer to PHP.net style
+documentation manual and test/test.php and test/correct. For the
+program and user supplied option string combinations covered, please
+refer to test/test.sh and test/correct.
+
+Examples
+========
+
+Simple
+------
+
+<?php
+require_once('sgetopt.php');
+extract(sgetopt('a:', TRUE));
+# Good to go.
+if (isset($a))
+	var_dump($a);
+?>
+
+Two Ways Processing
+-------------------
+
+<?php
+# Without error handling. Caller does all input checking.
+
+require_once('sgetopt.php');
+if (($opts = sgetopt('ab:c::h')))
+	foreach ($opts as $option => $argument)
+		switch ($option) {
+		case 'a':
+			if ($argument) {
+				print("error: $option: extraneous argument\n");
+				exit(1);
+			}
+			$a = TRUE;
+			break;
+		case 'b':
+			if (!$argument) {
+				print("error: $option: requires argument\n");
+				exit(1);
+			}
+			# Validating of $argument.
+			$b = $argument;
+			break;
+		case 'c':
+			if ($argument) {
+				# Validating of $argument.
+				$c = $argument;
+			} else {
+				$c = 1;
+			}
+			break;
+		case 'h':
+			print("help\n");
+			exit(0);
+		default:
+			print("error: $option\n");
+			exit(1);
+		}
+# Good to go.
+?>
+
+<?php
+# With error handling. Caller does no input option checking.
+
+define('HANDLE_ERROR', TRUE);
+
+require_once('sgetopt.php');
+if (($opts = sgetopt('ab:c::h', HANDLE_ERROR)))
+	foreach ($opts as $option => $argument)
+		switch ($option) {
+		case 'a':
+			$a = TRUE;
+			break;
+		case 'b':
+			# Validating of $argument.
+			$b = $argument;
+			break;
+		case 'c':
+			if ($argument) {
+				# Validating of $argument.
+				$c = $argument;
+			} else {
+				$c = 1;
+			}
+			break;
+		case 'h':
+			print("help\n");
+			exit(0);
+		}
+# Good to go.
+?>
+
+Copyright
+=========
+
+Copyright © 2014 Donatas Klimašauskas
+
+License
+=======
+
+This program is free software. Its GPLv3+ license is at the COPYING file.

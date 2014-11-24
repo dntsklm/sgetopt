@@ -1,0 +1,141 @@
+sgetopt
+-------
+
+sgetopt — Gets short options from the command line argument list
+
+Description
+-----------
+
+array sgetopt ( string $optstring [, bool $handleerror = FALSE ] )
+
+Parses short options passed to the script.
+
+Parameters
+----------
+
+### optstring
+
+Each character in this string will be used as option characters and
+matched against options passed to the script starting with a single
+hyphen (-). For example, an option string "x" recognizes an option
+-x. Only a-z and A-Z are allowed.
+
+### handleerror
+
+Output error message on STDERR and exit the calling program with the
+failure indicating return value (1). Default is FALSE (do not handle
+error and exit the caller).
+
+Note. If optstring is composed invalidly the error message is
+analogously formatted as for invalid user supplied option, but the
+cited invalid option is actually the invalid optstring. Likewise,
+if there is an invalid user supplied first option (e.g., hyphen is
+placed behind the option character), then the whole user supplied
+option string is cited.
+
+The optstring parameter may contain the following elements:
+
+* Individual characters (do not accept values)
+* Characters followed by a colon (parameter requires value)
+* Characters followed by two colons (optional value)
+
+Option values are the first arguments after an option character. It
+does matter if the first value has leading white space or not; the
+latter case is invalid.
+
+Note. Every option character must start with a single hyphen.
+
+Return Values
+-------------
+
+This function will return an array of option / argument pairs or an
+empty array if there are no option / argument pairs.
+
+Note. If error handling is requested, then it will print an error on
+STDERR and exit the caller program on failure.
+
+Note. The parsing of options does not end at the first non-option
+found, nothing is discarded.
+
+Examples
+--------
+
+Example #1 sgetopt() example: The basics
+
+<?php
+// Script example.php
+require_once('sgetopt.php');
+$options = sgetopt('ab:c::d::');
+var_dump($options);
+$options = sgetopt('ab:c::d::', TRUE); // handle caller error and exit
+var_dump($options);
+?>
+
+shell> php example.php -a -b required -c optional -d # good options
+
+The above example.php script invocation will output two equal arrays
+of options:
+
+array(4) {
+  ["a"]=>
+  string(0) ""
+  ["b"]=>
+  string(8) "required"
+  ["c"]=>
+  string(8) "optional"
+  ["d"]=>
+  string(0) ""
+}
+
+shell> php example.php -a extraneous -b -coptional -e # bad options
+
+The above invocation will output an array of all options and their
+values, even though there are errors, and an error message for the
+first detected error:
+
+array(4) {
+  ["a"]=>
+  string(10) "extraneous"
+  ["b"]=>
+  string(0) ""
+  ["coptional"]=>
+  string(0) ""
+  ["e"]=>
+  string(0) ""
+}
+example.php: option requires no argument -- 'a'
+Try `example.php -h' for more information.
+
+Example #2 sgetopt() example: Passing multiple same character options
+
+Using the same example.php described above, the following invocation
+will produce the following it output (two identical arrays):
+
+shell> php example.php -b required -a -b REQUIRED
+
+array(2) {
+  ["b"]=>
+  string(8) "REQUIRED"
+  ["a"]=>
+  string(0) ""
+}
+
+Example #3 sgetopt() example: Passing multiple values for an option
+
+Using the same example.php described above, the following invocation
+will produce the following it output (two identical arrays):
+
+shell> php example.php -b required REQUIRED
+
+array(1) {
+  ["b"]=>
+  string(16) "requiredREQUIRED"
+}
+
+Note. To preserve the white space between two or more argument words,
+please use quotes around them.
+
+See Also
+--------
+
+* getopt() - Gets options from the command line argument list

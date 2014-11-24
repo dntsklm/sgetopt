@@ -1,0 +1,1018 @@
+
+optstring: ""
+useropts (0): ""
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab:"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab:c"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab:c:"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab:c::"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "-a"
+useropts (5): "-b" "required" "-c" "optional" "-d"
+test.php: invalid option -- '-a'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: invalid option -- 'b'
+Try `test.php -h' for more information.
+
+optstring: "ab"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: option requires no argument -- 'b'
+Try `test.php -h' for more information.
+
+optstring: "ab:"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: invalid option -- 'c'
+Try `test.php -h' for more information.
+
+optstring: "ab:c"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: option requires no argument -- 'c'
+Try `test.php -h' for more information.
+
+optstring: "ab:c:"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: invalid option -- 'd'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: invalid option -- 'd'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::d"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+
+optstring: "ab:c::d:"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+test.php: option requires an argument -- 'd'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::d::"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+
+optstring: "ab:c::d::"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "ab:c::d::"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "ab:c::d::"
+useropts (2): "-a" "-b"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => 
+)
+test.php: option requires an argument -- 'b'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::d::"
+useropts (3): "-a" "-b" "required"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+)
+
+optstring: "ab:c::d::"
+useropts (4): "-a" "-b" "required" "-c"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => 
+)
+
+optstring: "ab:c::d::"
+useropts (5): "-a" "-b" "required" "-c" "optional"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+)
+
+optstring: "ab:c::d::"
+useropts (6): "-d" "-c" "optional" "-b" "required" "-a"
+Returns (∞):
+Array
+(
+    [d] => 
+    [c] => optional
+    [b] => required
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [d] => 
+    [c] => optional
+    [b] => required
+    [a] => 
+)
+
+optstring: "ab:c::d::"
+useropts (6): "-d" "-c" "optional" "-a" "-b" "required"
+Returns (∞):
+Array
+(
+    [d] => 
+    [c] => optional
+    [a] => 
+    [b] => required
+)
+Returns (✓):
+Array
+(
+    [d] => 
+    [c] => optional
+    [a] => 
+    [b] => required
+)
+
+optstring: "d::c::b:a"
+useropts (6): "-a" "-b" "required" "-c" "optional" "-d"
+Returns (∞):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+    [b] => required
+    [c] => optional
+    [d] => 
+)
+
+optstring: "d::c::b:a"
+useropts (6): "-d" "-c" "optional" "-a" "-b" "required"
+Returns (∞):
+Array
+(
+    [d] => 
+    [c] => optional
+    [a] => 
+    [b] => required
+)
+Returns (✓):
+Array
+(
+    [d] => 
+    [c] => optional
+    [a] => 
+    [b] => required
+)
+
+optstring: "ab:c::d:::"
+useropts (0): ""
+test.php: invalid option -- 'ab:c::d:::'
+Try `test.php -h' for more information.
+
+optstring: "a.b:c::d::"
+useropts (0): ""
+test.php: invalid option -- 'a.b:c::d::'
+Try `test.php -h' for more information.
+
+optstring: "ab:c,::d::"
+useropts (0): ""
+test.php: invalid option -- 'ab:c,::d::'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::2d::"
+useropts (0): ""
+test.php: invalid option -- 'ab:c::2d::'
+Try `test.php -h' for more information.
+
+optstring: ":ab:c::d::"
+useropts (0): ""
+test.php: invalid option -- ':ab:c::d::'
+Try `test.php -h' for more information.
+
+optstring: "-ab:c::d::"
+useropts (0): ""
+test.php: invalid option -- '-ab:c::d::'
+Try `test.php -h' for more information.
+
+optstring: "ab:c:-:d::"
+useropts (0): ""
+test.php: invalid option -- 'ab:c:-:d::'
+Try `test.php -h' for more information.
+
+optstring: "ab:c::d::-"
+useropts (0): ""
+test.php: invalid option -- 'ab:c::d::-'
+Try `test.php -h' for more information.
+
+optstring: "+ab:c::d::"
+useropts (0): ""
+test.php: invalid option -- '+ab:c::d::'
+Try `test.php -h' for more information.
+
+optstring: ":"
+useropts (0): ""
+test.php: invalid option -- ':'
+Try `test.php -h' for more information.
+
+optstring: "2:"
+useropts (0): ""
+test.php: invalid option -- '2:'
+Try `test.php -h' for more information.
+
+optstring: ":a"
+useropts (0): ""
+test.php: invalid option -- ':a'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a"
+useropts (2): "-a" "0"
+Returns (∞):
+Array
+(
+    [a] => 0
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+test.php: option requires an argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (2): "-a" "0"
+Returns (∞):
+Array
+(
+    [a] => 0
+)
+Returns (✓):
+Array
+(
+    [a] => 0
+)
+
+optstring: "a::"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a::"
+useropts (2): "-a" "0"
+Returns (∞):
+Array
+(
+    [a] => 0
+)
+Returns (✓):
+Array
+(
+    [a] => 0
+)
+
+optstring: "a::"
+useropts (2): "-a" "optional"
+Returns (∞):
+Array
+(
+    [a] => optional
+)
+Returns (✓):
+Array
+(
+    [a] => optional
+)
+
+optstring: "aa"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "a:a"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "aa:"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "a::a"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "aa::"
+useropts (0): ""
+Returns (∞):
+Array
+(
+)
+Returns (✓):
+Array
+(
+)
+
+optstring: "a"
+useropts (1): "-aa"
+Returns (∞):
+Array
+(
+    [aa] => 
+)
+test.php: invalid option -- 'aa'
+Try `test.php -h' for more information.
+
+optstring: "aa"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a:a"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "aa:"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+test.php: option requires an argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a::a"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "aa::"
+useropts (1): "-a"
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a:a"
+useropts (2): "-a" "required"
+Returns (∞):
+Array
+(
+    [a] => required
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "aa:"
+useropts (2): "-a" "required"
+Returns (∞):
+Array
+(
+    [a] => required
+)
+Returns (✓):
+Array
+(
+    [a] => required
+)
+
+optstring: "a::a"
+useropts (2): "-a" "optional"
+Returns (∞):
+Array
+(
+    [a] => optional
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "aa::"
+useropts (2): "-a" "optional"
+Returns (∞):
+Array
+(
+    [a] => optional
+)
+Returns (✓):
+Array
+(
+    [a] => optional
+)
+
+optstring: ""
+useropts (4): "-a" "required" "-a" "REQUIRED"
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (4): "-a" "required" "-a" "REQUIRED"
+Returns (∞):
+Array
+(
+    [a] => REQUIRED
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (4): "-a" "required" "-a" "REQUIRED"
+Returns (∞):
+Array
+(
+    [a] => REQUIRED
+)
+Returns (✓):
+Array
+(
+    [a] => REQUIRED
+)
+
+optstring: "a::"
+useropts (4): "-a" "optional" "-a" "OPTIONAL"
+Returns (∞):
+Array
+(
+    [a] => OPTIONAL
+)
+Returns (✓):
+Array
+(
+    [a] => OPTIONAL
+)
+
+optstring: "a"
+useropts (1): "-a=2"
+Returns (∞):
+Array
+(
+    [a=2] => 
+)
+test.php: invalid option -- 'a=2'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (1): "-a=2"
+Returns (∞):
+Array
+(
+    [a=2] => 
+)
+test.php: invalid option -- 'a=2'
+Try `test.php -h' for more information.
+
+optstring: "a::"
+useropts (1): "-a=2"
+Returns (∞):
+Array
+(
+    [a=2] => 
+)
+test.php: invalid option -- 'a=2'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (2): "-a" "=2"
+Returns (∞):
+Array
+(
+    [a] => =2
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (2): "-a" "-2"
+Returns (∞):
+Array
+(
+    [a] => -2
+)
+Returns (✓):
+Array
+(
+    [a] => -2
+)
+
+optstring: "a::"
+useropts (2): "-a" "+2"
+Returns (∞):
+Array
+(
+    [a] => +2
+)
+Returns (✓):
+Array
+(
+    [a] => +2
+)
+
+optstring: "a:"
+useropts (2): "-a" "-"
+Returns (∞):
+Array
+(
+    [a] => -
+)
+Returns (✓):
+Array
+(
+    [a] => -
+)
+
+optstring: "a:"
+useropts (3): "-a" "-" "b"
+Returns (∞):
+Array
+(
+    [a] => -b
+)
+Returns (✓):
+Array
+(
+    [a] => -b
+)
+
+optstring: "a:"
+useropts (2): "-a" "- b"
+Returns (∞):
+Array
+(
+    [a] => - b
+)
+Returns (✓):
+Array
+(
+    [a] => - b
+)
+
+optstring: "a:"
+useropts (2): "-a" "--"
+Returns (∞):
+Array
+(
+    [a] => --
+)
+Returns (✓):
+Array
+(
+    [a] => --
+)
+
+optstring: "a:"
+useropts (3): "-a" "--" "b"
+Returns (∞):
+Array
+(
+    [a] => --b
+)
+Returns (✓):
+Array
+(
+    [a] => --b
+)
+
+optstring: "a:"
+useropts (2): "-a" "-- b"
+Returns (∞):
+Array
+(
+    [a] => -- b
+)
+Returns (✓):
+Array
+(
+    [a] => -- b
+)
+
+optstring: ""
+useropts (1): "-a"
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: ""
+useropts (2): "-a" "0"
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a "
+useropts (0): ""
+test.php: invalid option -- 'a '
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (1): "a-"
+test.php: invalid option -- 'a-'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (2): "a-" "-a"
+test.php: invalid option -- 'a- -a'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (2): "-a" "a-"
+Returns (∞):
+Array
+(
+    [a] => a-
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (1): ""
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (1): " "
+test.php: invalid option -- ' '
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (1): ""
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (1): " "
+test.php: invalid option -- ' '
+Try `test.php -h' for more information.
+
+optstring: "a::"
+useropts (1): ""
+test.php: invalid option -- ''
+Try `test.php -h' for more information.
+
+optstring: "a::"
+useropts (1): " "
+test.php: invalid option -- ' '
+Try `test.php -h' for more information.
+
+optstring: "a"
+useropts (2): "-a" ""
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a"
+useropts (2): "-a" " "
+Returns (∞):
+Array
+(
+    [a] =>  
+)
+test.php: option requires no argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (2): "-a" ""
+Returns (∞):
+Array
+(
+    [a] => 
+)
+test.php: option requires an argument -- 'a'
+Try `test.php -h' for more information.
+
+optstring: "a:"
+useropts (2): "-a" " "
+Returns (∞):
+Array
+(
+    [a] =>  
+)
+Returns (✓):
+Array
+(
+    [a] =>  
+)
+
+optstring: "a::"
+useropts (2): "-a" ""
+Returns (∞):
+Array
+(
+    [a] => 
+)
+Returns (✓):
+Array
+(
+    [a] => 
+)
+
+optstring: "a::"
+useropts (2): "-a" " "
+Returns (∞):
+Array
+(
+    [a] =>  
+)
+Returns (✓):
+Array
+(
+    [a] =>  
+)
+
+optstring: "A::"
+useropts (1): "-A"
+Returns (∞):
+Array
+(
+    [A] => 
+)
+Returns (✓):
+Array
+(
+    [A] => 
+)
